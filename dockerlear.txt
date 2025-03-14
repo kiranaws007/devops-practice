@@ -1,0 +1,27 @@
+docker pull nginx
+docker pull nginx:1.20
+docker images
+docker run nginx
+docker ps
+docker ps -a
+docker run -d nginx
+docker run -d nginx:1.20
+docker run -p 90:80 -d nginx
+docker run -p 80:80 -d nginx:1.20
+docker ps
+docker ps -a
+docker rm containerID constainerID
+docker stop containerID
+docker rm containerId
+docker run --name test -d nginx # name of container is test
+docker rename containerName Newname #change name of exixsting container
+docker ps
+docker stop containerName
+docker ps -a
+docker start conatinerName
+docker images
+docker rmi nginx:1.20 # remove image
+docker stop and remove container to remove images
+docker rmi containername
+docker --help
+docker run --help
