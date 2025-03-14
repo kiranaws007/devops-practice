@@ -51,3 +51,33 @@ docker stop $(docker ps -a)
 docker rm $()[Ddocker ps -a)
 docker run -e Mono=root -e mongoinit=passwd -p 270117"27-17 -d --net mongo-net --name mongodb mongo:4.4.6
 Host network # you can acces from conaatiner
+Dockerfile | Building Custom Image | Deploying Spring Boot in Docker
+dockerfile is a text document with list of instructions. all instructsipon follwed ny argumebts
+to copy from local to image # copy souce destinastion 
+mvn clean package # it will geneate Jar file to statrt application. in taeget dir. # to run application.  java -jar target/todo-1.20.jar
+Dockerfile
+# bdownload java
+FROM openjdk:18-jdk
+# copy jar from local to image 
+ADD target/todo-1.0.2.jar todo-1.0.2.jar
+# add or copy boith are same but add can download urls, extrat local tar to root image
+# run application jar
+ENTRY POINT RUNS TO HELP[A[B[B
+cmd replace entire command. but entrypointappends weith existing commands.
+ENTRYPOINT["java", -jar", "todo-1.02.jar"
+
+docker build -t todoapiimageb. # t is tag for image 
+dpocker images
+
+ARG JAVA_VERSION="18-jdk"
+FROM openjdk=${JAVA_VERSION}
+ENV OPROJECY_NAME="todoi-api"   
+# ARG is name of a variable  # accessed using    docker build -t todo . --build-arg JAVA_VERSION=18.jdk
+ env vs arg is env is persisted when container image is runs .means u can acces tis variables within the container .   arg is temporary and can be used only during building image.if use same name of arg and env then env overrides arg
+# create folder 
+RUN mkdir ${APP_H0ME}
+workdir ${app_home}
+EXPOSE 8080 # To expose is used when other conatiner wants to talk to service. diifeerent from -p flag which publish port as hostport containrerport bindng. 
+to access service from local host. 
+expose is used when other conatiner wants to talk to service which is in different container
+LABEL version="1.1.0"
