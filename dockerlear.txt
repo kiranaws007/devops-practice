@@ -25,3 +25,7 @@ docker stop and remove container to remove images
 docker rmi containername
 docker --help
 docker run --help
+docker pull mongo:4.4.6
+docker images
+docker run -e MOngoDB_ROOT_usernae=root -e Mongorootpasswd=passwd -p 27017:27017 -d mongo.4.4.0 # -e fro passoing envirimental varibles to the docker container -p is port d is detached
+8081 is Mongoexpress
