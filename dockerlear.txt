@@ -37,7 +37,7 @@ docker network ls //bridge, host, none
 none --> not able acces anything outside this container execpt resource of container
 docker ru
 docker run -d --network none alpine
-docker ps -a # apline image is exited imediately beacuse apline is just os. application is there. container run service or run some computaion or to run. when no service container exits immediately
+docker ps -a # aLpine image is exited immediately because alpine is just os. application is there. container run service or run some computaion or to run. when no service container exits immediately
 docker exec -it containerId sh
 ping google.com
 brige network --> can acces external resources and containers in same network
@@ -48,11 +48,11 @@ to acces container using cintauner name create custom bridge network. # we cannt
 to create custom bride nwk# docker network create networkname --driver bridge
 docker network ls
 docker stop $(docker ps -a)
-docker rm $()[Ddocker ps -a)
+docker rm $(docker ps -a)
 docker run -e Mono=root -e mongoinit=passwd -p 270117"27-17 -d --net mongo-net --name mongodb mongo:4.4.6
 Host network # you can acces from conaatiner
 Dockerfile | Building Custom Image | Deploying Spring Boot in Docker
-dockerfile is a text document with list of instructions. all instructsipon follwed ny argumebts
+dockerfile is a text document with list of instructions. all instructs upon follwed ny argumebts
 to copy from local to image # copy souce destinastion 
 mvn clean package # it will geneate Jar file to statrt application. in taeget dir. # to run application.  java -jar target/todo-1.20.jar
 Dockerfile
@@ -67,11 +67,11 @@ cmd replace entire command. but entrypointappends weith existing commands.
 ENTRYPOINT["java", -jar", "todo-1.02.jar"
 
 docker build -t todoapiimageb. # t is tag for image 
-dpocker images
+docker images
 
 ARG JAVA_VERSION="18-jdk"
 FROM openjdk=${JAVA_VERSION}
-ENV OPROJECY_NAME="todoi-api"   
+ENV PROJECT_NAME="todoi-api"   
 # ARG is name of a variable  # accessed using    docker build -t todo . --build-arg JAVA_VERSION=18.jdk
  env vs arg is env is persisted when container image is runs .means u can acces tis variables within the container .   arg is temporary and can be used only during building image.if use same name of arg and env then env overrides arg
 # create folder 
@@ -81,3 +81,25 @@ EXPOSE 8080 # To expose is used when other conatiner wants to talk to service. d
 to access service from local host. 
 expose is used when other conatiner wants to talk to service which is in different container
 LABEL version="1.1.0"
+Docker Best Practices | Deploying ReactJS application in Docker
+DOCKER FILE, MULTISTAGE BUILD, DOCKER CACHING , .DOCKERIGONRE FILE
+FROM node:alpine
+WORKDIR /app
+copy . ./
+RUN npm install
+ENTRYPOINT ["npm","start"]
+docker build -t todo-ui . # ERROR BEACUSE FILE NAME IS dockerfile.dev
+docker build -f dockerfile.dev -t todo .
+# f is dockerfile name T is tag name for docker image we are building to r
+TO DECRESE SIZE OF DOCKER IMAGE
+dockerfile.prod # multidstage build
+build and copy only build folder
+
+FROM node:alpine AS build
+WORKDIR /app
+COPY . ./
+RUN npm install
+RUN npm run build 
+# deploying  to nginx
+FROM NGINX:STABLE-APLINE # ALPINE FOR PROD beacuse small size
+COPY --from=build /app/build # we are speciying stage name from build
